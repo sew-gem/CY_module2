@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 9</title>
+    <style>
+        .container {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items:  center;
+            gap: 20px;
+        }
+        .images {
+            width: 700px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img id="img" src="images/img1.jpg" alt="big img" style="width: 700px; height: auto">
+
+        <div class="images">
+            <img onclick="load(this)" src="images/img1.jpg" style="width:80px">    
+            <img onclick="load(this)" src="images/img3.jpg" style="width:80px">
+            <img onclick="load(this)" src="images/img4.jpg" style="width:80px; border: 1px solid rgb(168, 166, 166)">
+            <img onclick="load(this)" src="images/img5.jpg" style="width:80px">
+            <img onclick="load(this)" src="images/img6.jpg" style="width:80px">
+            <img onclick="load(this)" src="images/img1.jpg" style="width:80px">
+        </div>
+    </div>
+
+    <script>
+
+        function load(link) {
+            const img = document.getElementById("img");
+            img.src = link.src;
+        }
+    </script>
+</body>
+</html>

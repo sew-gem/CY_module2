@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/exercise7.css">
+    <style>
+        .container {
+            margin: 0 auto;
+            width: 500px;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form {
+            width: 300px;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            width: 100px;
+        }
+
+        p {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Sign up</h3>
+        <div class="form">
+            <form>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+            </form>
+            <p id="validName"></p>
+            <form>
+                <label for="password">Password</label>
+                <input type="text" id="password" name="password">
+            </form>
+            <p id="validPassword"></p>
+            <form>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email">
+            </form>
+            <p id="validEmail"></p>
+            <form>
+                <label for="fullname">FullName</label>
+                <input type="text" id="fullname" name="fullname">
+            </form>
+            <p id="fullnameInvalid"></p>
+        </div>
+        <br>
+        <button onclick="clickSubmit()">Submit</button>
+    </div>
+
+    <script>
+        const formNode = document.getElementsByClassName("form")
+        function usernameCheck(username) {
+            let username1 = document.getElementById("username").value;
+            if (username1 == "") {
+                let text = "vui long dien vao truong nay"
+                document.getElementById("validName").innerHTML= text
+            } else if (username1.length < 5 || username1.length > 10) {
+                let text = "vui long tao 5-10 ki tu"
+                document.getElementById("validName").innerHTML= text
+            } else{
+                document.getElementById("validName").innerHTML= ""
+            }
+        }
+        function passwordCheck(){
+            let pw = document.getElementById("password").value;
+            if(pw == ""){
+                let text = "vui long dien vao truong nay"
+                document.getElementById("validPassword").innerHTML= text
+            } else if (pw.length < 5 || pw.length > 10) {
+                let text = "vui long tao 5-10 ki tu"
+                document.getElementById("validPassword").innerHTML= text
+            } else{
+                document.getElementById("validPassword").innerHTML= ""
+            }
+        }
+
+        function  emailCheck(){
+            let email = document.getElementById("email").value;
+            const emailPattern = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,6}$/;
+            if(email !== emailPattern){
+                let text = "invalid email"
+                document.getElementById("validEmail").innerHTML = text
+            }else{
+                document.getElementById("validEmail").innerHTML= ""
+            }
+        }
+
+
+
+        function clickSubmit() {
+            usernameCheck();
+            passwordCheck();
+            emailCheck();
+        }
+    </script>
+</body>
+
+</html>
