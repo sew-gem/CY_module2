@@ -17,12 +17,12 @@
     <ul>
 
     </ul>
-    <button onclick="clickCopy">Copy</button>
+    <button onclick="clickCopy()">Copy</button>
 
     <script>
-        const ul = document.querySelector('ul');
         function clickCopy(){
-            
+        const ul = document.querySelector('ul');
+        ul.nextElementSibling.innerHTML = ul.innerHTML;
         }
     </script>
 </body>
