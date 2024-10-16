@@ -77,9 +77,9 @@
     </div> 
 
     <script>
-        let slideIndex = 1;
+        let slideIndex = 1; //current index 
         showSlides(slideIndex);
-        function plusSlides(n) {
+        function plusSlides(n) {  //gắn vào next/prev button
             showSlides(slideIndex += n);
         }
         function currentSlide(n) {
@@ -88,16 +88,16 @@
 
         function showSlides(n) {
             let slides = document.getElementsByClassName("mySlides");
-            if (n > slides.length) {
+            if (n > slides.length) {   //nếu n > số lượng hình ảnh thì set index về 1 (quay lại hình đầu tiên)
                 slideIndex = 1
             }
             if (n < 1) {
-                slideIndex = slides.length
+                slideIndex = slides.length //hiện hình ảnh cuối nếu index < 1
             }
             for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
+                slides[i].style.display = "none";  //display none -> ẩn tất cả các hình ảnh
             }
-            slides[slideIndex-1].style.display = "block";
+            slides[slideIndex-1].style.display = "block";  //display block -> hiện lại hình ảnh
         }
     </script>
 </body>

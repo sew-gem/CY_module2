@@ -16,17 +16,25 @@
             align-items: center;
         }
 
-        .form {
-            width: 300px;
+        #form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-
-        form {
+        #form div {
             display: flex;
             justify-content: space-between;
+            gap: 20px;
         }
 
         button {
             width: 100px;
+            margin-bottom: 10px;
+            align-self: center;
+        }
+
+        h2 {
+            align-self: center
         }
 
         p {
@@ -37,35 +45,41 @@
 
 <body>
     <div class="container">
-        <h3>Sign up</h3>
-        <div class="form">
-            <form>
+        <form id="form">
+            <h2>Sign up</h2>
+            <div>
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username">
-            </form>
+            </div>
             <p id="validName"></p>
-            <form>
+
+            <div>
                 <label for="password">Password</label>
                 <input type="text" id="password" name="password">
-            </form>
+            </div>
             <p id="validPassword"></p>
-            <form>
+
+            <div>
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email">
-            </form>
+            </div>
             <p id="validEmail"></p>
-            <form>
+
+            <div>
                 <label for="fullname">FullName</label>
                 <input type="text" id="fullname" name="fullname">
-            </form>
+            </div>
             <p id="fullnameInvalid"></p>
-        </div>
-        <br>
-        <button onclick="clickSubmit()">Submit</button>
+
+            <button onclick="clickSubmit()">Submit</button>
+        </form>
     </div>
 
-    <script>
-        const formNode = document.getElementsByClassName("form")
+    <script>    
+        document.getElementById('form').addEventListener('submit', (e) => {
+            e.preventDefault()
+        })
+        const formNode = document.getElementsById("form")
         function usernameCheck(username) {
             let username1 = document.getElementById("username").value;
             if (username1 == "") {
