@@ -18,9 +18,12 @@
     <script>
         function  clickChange(){
             const ul = document.querySelector("ul");
-            const li = document.getElementsByTagName("li");
-            li.reverse();
-            
+            const li = document.querySelectorAll("li");
+            let i = ul.childNodes.length;
+            while(i--){
+                ul.appendChild(ul.childNodes[i]);
+            }
+
         }
 
     </script>
