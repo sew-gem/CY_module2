@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <title>file upload</title> -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="drop_zone" 
+        ondrop="drop(event)" 
+        ondragover="allowDrop(event)"
+        >
+        <p>Drag and Drop File here to upload</p>
+        <input type="file" id="myFile" accept=".zip,.png, .docx, .jpg" multiple>
+        <div id="preview"></div>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>

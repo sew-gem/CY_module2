@@ -1,0 +1,63 @@
+.app {
+    margin: 0 auto;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 700px;
+}
+
+button {
+    /* margin-right:10px; */
+    background: #008CBA;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    padding: 10px;   
+    box-shadow: 2px 2px lightgray;
+    transition-duration: 0.3s;
+}
+button:hover {
+    background-color: white;
+    color: #008CBA;
+    border: 1px solid #008CBA;
+}
+
+.app__list-note {
+    border: 1px dashed #008CBA;
+    min-height: 200px;
+}
+.app__list-note div {
+    border: 1px solid gray;
+}
+
+.app__modal-add-note {
+    background: white;
+    box-shadow: 3px 3px lightgray;
+    border: 1px solid #008CBA;
+    border-radius: 10px;
+    display: none;
+}
+
+.app__modal-add-note__form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 10px;
+}
+.app__modal-add-note__add-form__title-note {
+    border: 1px solid #008CBA;
+    padding: 10px;
+    border-radius: 5px;
+}
+.app__modal-add-note__add-form__content-note {
+    height: 150px;
+    border: 1px solid #008CBA;
+    padding: 10px;
+    border-radius: 5px;
+}
+p {
+    text-align: center;
+    font-weight: 700;
+    color: #008CBA;
+}
