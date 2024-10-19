@@ -3,18 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title>file upload</title> -->
-    <link rel="stylesheet" href="./style.css">
+    <title>file upload</title>
+     <style>
+        .drop-zone {
+            position: relative;
+            width: 60%;
+            height: 30%;
+            height: auto;
+            margin: 50px auto;
+            border: 1px dashed lightgray;
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+        }
+        .drop-zone__p {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 400;
+            color: gray;
+        }
+        .drop-zone__file-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .drop-zone__preview {
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .preview-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            margin: 0 auto;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+        }
+        .preview-item p {
+            overflow: hidden; 
+            white-space: nowrap; 
+            text-overflow: ellipsis; 
+            max-width: 100px; 
+            font-size: 10px;
+            text-align: center;
+        }
+        button {
+            position: absolute;
+            top: 2px;
+            right:2px;
+            color: black;
+            background: transparent;
+            border: none;
+        }
+     </style>
 </head>
 <body>
-    <div id="drop_zone" 
-        ondrop="drop(event)" 
-        ondragover="allowDrop(event)"
-        >
-        <p>Drag and Drop File here to upload</p>
-        <input type="file" id="myFile" accept=".zip,.png, .docx, .jpg" multiple>
-        <div id="preview"></div>
+    <div class="drop-zone">
+        <p class="drop-zone__p">Drag and Drop File here to upload</p>
+        <input class="drop-zone__file-input" type="file" multiple>
+        <div class="drop-zone__preview"></div>
     </div>
-    <script src="./main.js"></script>
+    <script>
+        const dropZone = document.querySelector('.drop-zone');
+        const previewContainer = document.querySelector('.drop-zone__preview');
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+        } )
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const files = e.dataTransfer.files; //data array that save file's data transfer from drop 
+            handleFile(files);
+        } )
+        dropZone.addEventListener('change', (e) => {
+            handleFile(e.target.files);
+        } )
+        function handleFile(files){
+            for(const file of files){
+                const readFile = new FileReader();
+                readFile.onload = function(e){
+                    const previewItem = document.createElement('div');
+                    previewItem.classList.add('preview-item');
+
+                    const img = document.createElement('img');
+                    if(file.type.startsWith('image/')){
+                        img.src = e.target.result;
+                    } else {
+                        img.src = './file-icon.jpg';
+                    }
+
+                    const fileName = document.createElement('p');
+                    fileName.textContent = file.name;
+
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.textContent = 'x';
+                    deleteBtn.onclick = function(){
+                        previewContainer.removeChild(previewItem);
+                    }
+
+                    previewContainer.appendChild(previewItem);
+                    previewItem.appendChild(img);
+                    previewItem.appendChild(deleteBtn);
+                    previewItem.appendChild(fileName);
+                }
+                readFile.readAsDataURL(file);
+            }
+        }
+    </script>
 </body>
 </html>
