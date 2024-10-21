@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Music Player</title>
+</head>
+<body>
+    <div class="music-player">
+        <!-- cover -->
+        <div class="music-player__cover">
+            <p>"Top 100"</p>
+            <img src="assets/img/lovely_cover.png" alt="song cover">
+            <p>Song Name</p>
+            <p>Artist</p>
+        </div>
+        
+        <!-- progress time & bar  -->
+        <div class="music-player__progress">
+            <div>
+                <span class="music-player__progress__current-time">0:00</span>
+                <span class="music-player__progress__duration-time">0:00</span>
+            </div>
+            <div>
+                <div class="music-player__progress__current-bar"></div>
+                <div class="music-player__progress__thumb-bar"></div>
+            </div>
+        </div>
+        <!-- control play button -->
+        <div class="music-player__control">
+            <button class="music-player__control__btn-prev">
+                <img src="assets/img/prev.svg" alt="prev icon">
+            </button>
+            <button class="music-player__control__btn-play">
+                <img src="assets/img/play.svg" alt="play icon">
+            </button>
+            <button class="music-player__control__btn-next">
+                <img src="assets/img/next.svg" alt="next icon">
+            </button>
+        </div>
+        <!-- list song  -->
+        <ul class="music-player__list-song"></ul>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>
